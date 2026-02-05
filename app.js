@@ -2,6 +2,151 @@
 // A Spotify Marketing Experience
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Mock data - Top Songs with real album artwork
+    const topSongs = [
+        {
+            title: "Good Luck, Babe!",
+            artist: "Chappell Roan",
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/29/a7/c4/29a7c478-351d-25eb-a116-3e68118cdab8/24UMGIM31246.rgb.jpg/500x500bb.jpg"
+        },
+        {
+            title: "Espresso",
+            artist: "Sabrina Carpenter",
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/a1/1c/ca/a11ccab6-7d4c-e041-d028-998bcebeb709/24UMGIM61704.rgb.jpg/500x500bb.jpg"
+        },
+        {
+            title: "Not Like Us",
+            artist: "Kendrick Lamar",
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/31/3a/3f/313a3fbc-bb8f-80c7-b5a2-e226869a38cd/24UMGIM51924.rgb.jpg/500x500bb.jpg"
+        },
+        {
+            title: "Birds of a Feather",
+            artist: "Billie Eilish",
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/92/9f/69/929f69f1-9977-3a44-d674-11f70c852d1b/24UMGIM36186.rgb.jpg/500x500bb.jpg"
+        },
+        {
+            title: "Beautiful Things",
+            artist: "Benson Boone",
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/b4/71/42/b4714219-fa20-e534-5297-08c2580bc3c1/24UMGIM08270.rgb.jpg/500x500bb.jpg"
+        },
+        {
+            title: "Lose Control",
+            artist: "Teddy Swims",
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/4e/40/93/4e409396-a558-c0ee-07f3-511193f9a104/093624852711.jpg/500x500bb.jpg"
+        },
+        {
+            title: "Pink Friday Girls",
+            artist: "Nicki Minaj",
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/4f/df/cc/4fdfcc6c-fd68-85d0-a8cf-8c6e9f0b34a0/24UMGIM07541.rgb.jpg/500x500bb.jpg"
+        },
+        {
+            title: "Stick Season",
+            artist: "Noah Kahan",
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/59/3d/0c/593d0c73-8c3c-c890-efb7-347420e05f90/810090090924.jpg/500x500bb.jpg"
+        },
+        {
+            title: "Cruel Summer",
+            artist: "Taylor Swift",
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/e0/d5/7b/e0d57b28-4d2f-5c14-d346-f5e1a06dc561/19UMGIM57098.rgb.jpg/500x500bb.jpg"
+        },
+        {
+            title: "Water",
+            artist: "Tyla",
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/c3/d5/08/c3d5088d-3b24-0e03-3fd6-6e4cf3efcf76/196871349413.jpg/500x500bb.jpg"
+        },
+        {
+            title: "Vampire",
+            artist: "Olivia Rodrigo",
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/8c/32/a1/8c32a197-60cb-a36d-1a1c-24b61d93ae7f/23UM1IM07174.rgb.jpg/500x500bb.jpg"
+        },
+        {
+            title: "Snooze",
+            artist: "SZA",
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/0d/4f/9b/0d4f9b76-1e3b-d56e-cc73-ade6f12d83c4/196589418838.jpg/500x500bb.jpg"
+        }
+    ];
+
+    // Mock data - Top Podcasts
+    const topPodcasts = [
+        { title: "Call Her Daddy", host: "Alex Cooper" },
+        { title: "The Joe Rogan Experience", host: "Joe Rogan" },
+        { title: "Crime Junkie", host: "Ashley Flowers" },
+        { title: "New Heights", host: "Travis & Jason Kelce" },
+        { title: "SmartLess", host: "Bateman, Arnett & Hayes" },
+        { title: "The Daily", host: "The New York Times" },
+        { title: "Huberman Lab", host: "Andrew Huberman" },
+        { title: "Armchair Expert", host: "Dax Shepard" },
+        { title: "Conan Needs a Friend", host: "Conan O'Brien" },
+        { title: "Anything Goes", host: "Emma Chamberlain" },
+        { title: "On Purpose", host: "Jay Shetty" },
+        { title: "The Diary of a CEO", host: "Steven Bartlett" },
+        { title: "Wiser Than Me", host: "Julia Louis-Dreyfus" },
+        { title: "Hot Ones", host: "Sean Evans" },
+        { title: "Table Manners", host: "Jessie Ware" }
+    ];
+
+    // Current selection
+    let selectedSong = null;
+    let selectedPodcast = null;
+    let bandName = '';
+
+    // Helper functions
+    function getFirstWord(str) {
+        return str.split(' ')[0].replace(/[^a-zA-Z]/g, '');
+    }
+
+    function getLastWord(str) {
+        const words = str.split(' ');
+        return words[words.length - 1].replace(/[^a-zA-Z]/g, '');
+    }
+
+    function generateBandName() {
+        selectedSong = topSongs[Math.floor(Math.random() * topSongs.length)];
+        selectedPodcast = topPodcasts[Math.floor(Math.random() * topPodcasts.length)];
+
+        const firstWord = getFirstWord(selectedSong.title);
+        const lastWord = getLastWord(selectedPodcast.title);
+        bandName = `${firstWord} ${lastWord}`;
+
+        // Update the UI with selected data
+        updateUI();
+    }
+
+    function formatSongTitleWithHighlight(title) {
+        const firstWord = getFirstWord(title);
+        const rest = title.substring(firstWord.length).trim();
+        if (rest) {
+            return `<span class="highlight-word">${firstWord}</span> ${rest}`;
+        }
+        return `<span class="highlight-word">${firstWord}</span>`;
+    }
+
+    function formatPodcastTitleWithHighlight(title) {
+        const words = title.split(' ');
+        const lastWord = words[words.length - 1];
+        const rest = words.slice(0, -1).join(' ');
+        if (rest) {
+            return `${rest} <span class="highlight-word">${lastWord}</span>`;
+        }
+        return `<span class="highlight-word">${lastWord}</span>`;
+    }
+
+    function updateUI() {
+        // Update song screen
+        document.getElementById('song-artwork').src = selectedSong.artwork;
+        document.getElementById('song-title').innerHTML = formatSongTitleWithHighlight(selectedSong.title);
+        document.getElementById('song-artist').textContent = selectedSong.artist;
+
+        // Update podcast screen
+        document.getElementById('podcast-title').innerHTML = formatPodcastTitleWithHighlight(selectedPodcast.title);
+        document.getElementById('podcast-host').textContent = selectedPodcast.host;
+
+        // Update result screen
+        document.getElementById('band-name-text').textContent = bandName;
+        document.getElementById('formula-song').textContent = `"${getFirstWord(selectedSong.title)}" from ${selectedSong.title}`;
+        document.getElementById('formula-podcast').textContent = `"${getLastWord(selectedPodcast.title)}" from ${selectedPodcast.title}`;
+    }
+
     // Screen elements
     const screens = {
         home: document.getElementById('screen-home'),
@@ -144,22 +289,24 @@ document.addEventListener('DOMContentLoaded', () => {
     function shareResult() {
         playClickSound();
 
-        // Create a visual feedback
-        btnShare.textContent = 'Copied to clipboard!';
-        btnShare.style.background = '#000';
+        // Copy to clipboard
+        navigator.clipboard.writeText(`My band name is ${bandName}! 🤘 Find yours at ${window.location.href}`).then(() => {
+            btnShare.textContent = 'Copied to clipboard!';
+            btnShare.style.background = '#000';
 
-        setTimeout(() => {
-            btnShare.innerHTML = '<span class="share-icon">↗</span> Share your band name';
-            btnShare.style.background = '#1DB954';
-        }, 2000);
-
-        // In a real app, this would trigger native share or copy
-        console.log('Sharing: Your band name is Good Daddy!');
+            setTimeout(() => {
+                btnShare.innerHTML = '<span class="share-icon">↗</span> Share your band name';
+                btnShare.style.background = '#1DB954';
+            }, 2000);
+        });
     }
 
     // Restart experience
     function restart() {
         playClickSound();
+
+        // Generate new random data
+        generateBandName();
 
         // Hide all screens
         Object.values(screens).forEach(screen => {
@@ -175,6 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listeners
     banner.addEventListener('click', () => {
         initAudio();
+        generateBandName();
         goToScreen('home', 'intro');
     });
 
