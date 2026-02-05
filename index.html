@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Now Starting a Band | Spotify</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Password Protection Styles */
+        .password-gate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        .password-gate.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .password-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 48px 40px;
+            text-align: center;
+            max-width: 360px;
+            backdrop-filter: blur(20px);
+        }
+        .password-box .lock-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        .password-box h2 {
+            color: #fff;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .password-box p {
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+        .password-input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 500px;
+            background: rgba(0,0,0,0.3);
+            color: #fff;
+            font-size: 16px;
+            font-family: 'Spotify Mix', -apple-system, sans-serif;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.2s ease;
+            margin-bottom: 16px;
+        }
+        .password-input:focus {
+            border-color: #1DB954;
+        }
+        .password-input.error {
+            border-color: #FF6B6B;
+            animation: shake 0.4s ease;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+        .password-submit {
+            width: 100%;
+            padding: 16px 32px;
+            background: #1DB954;
+            color: #fff;
+            border: none;
+            border-radius: 500px;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Spotify Mix', -apple-system, sans-serif;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        .password-submit:hover {
+            transform: scale(1.02);
+            background: #1ed760;
+        }
+        .main-content {
+            display: none;
+        }
+        .main-content.visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Password Protection Gate -->
+    <div class="password-gate" id="passwordGate">
+        <div class="password-box">
+            <div class="lock-icon">🔒</div>
+            <h2>Protected Preview</h2>
+            <p>Enter password to view this experience</p>
+            <input type="password" class="password-input" id="passwordInput" placeholder="Password" autocomplete="off">
+            <button class="password-submit" id="passwordSubmit">Enter</button>
+        </div>
+    </div>
+
+    <div class="main-content" id="mainContent">
+    <div class="page-wrapper">
+        <!-- iPhone Frame -->
+        <div class="iphone-frame">
+            <div class="dynamic-island"></div>
+            <div class="screen">
+
+                <!-- Screen 1: Spotify Home -->
+                <div class="screen-content spotify-home active" id="screen-home">
+                    <div class="spotify-header">
+                        <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Green.png" class="spotify-logo" alt="Spotify">
+                        <div class="header-icons">
+                            <div class="icon-circle">🔔</div>
+                            <div class="icon-circle">⏱️</div>
+                            <div class="icon-circle">⚙️</div>
+                        </div>
+                    </div>
+
+                    <!-- Promo Banner - Tap to start -->
+                    <div class="promo-banner" id="start-banner">
+                        <div class="banner-content">
+                            <div class="banner-icon">🤘</div>
+                            <div class="banner-text">
+                                <span class="banner-title">Now Starting a Band</span>
+                                <span class="banner-sub">Discover your band name →</span>
+                            </div>
+                        </div>
+                        <div class="banner-shimmer"></div>
+                    </div>
+
+                    <div class="section-title">Good evening</div>
+
+                    <div class="quick-picks">
+                        <div class="quick-item">
+                            <img class="quick-img" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/a7/98/d8/a798d867-344d-2bf2-fbfe-d2d1412dcef8/14UMDIM03793.rgb.jpg/100x100bb.jpg" alt="1989">
+                            <span>1989</span>
+                        </div>
+                        <div class="quick-item">
+                            <img class="quick-img" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/a1/1c/ca/a11ccab6-7d4c-e041-d028-998bcebeb709/24UMGIM61704.rgb.jpg/100x100bb.jpg" alt="Espresso">
+                            <span>Espresso</span>
+                        </div>
+                        <div class="quick-item">
+                            <img class="quick-img" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/29/a7/c4/29a7c478-351d-25eb-a116-3e68118cdab8/24UMGIM31246.rgb.jpg/100x100bb.jpg" alt="Good Luck">
+                            <span>Good Luck, Babe!</span>
+                        </div>
+                        <div class="quick-item">
+                            <img class="quick-img" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/92/9f/69/929f69f1-9977-3a44-d674-11f70c852d1b/24UMGIM36186.rgb.jpg/100x100bb.jpg" alt="Birds">
+                            <span>HIT ME HARD...</span>
+                        </div>
+                    </div>
+
+                    <div class="section-title">Recently played</div>
+                    <div class="recent-row">
+                        <div class="card-item">
+                            <img class="card-img" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/31/3a/3f/313a3fbc-bb8f-80c7-b5a2-e226869a38cd/24UMGIM51924.rgb.jpg/200x200bb.jpg" alt="Not Like Us">
+                            <div class="card-title">Not Like Us</div>
+                            <div class="card-sub">Kendrick Lamar</div>
+                        </div>
+                        <div class="card-item">
+                            <img class="card-img" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/a1/1c/ca/a11ccab6-7d4c-e041-d028-998bcebeb709/24UMGIM61704.rgb.jpg/200x200bb.jpg" alt="Espresso">
+                            <div class="card-title">Espresso</div>
+                            <div class="card-sub">Sabrina Carpenter</div>
+                        </div>
+                    </div>
+
+                    <div class="tap-hint">Tap the banner to start</div>
+                </div>
+
+                <!-- Screen 2: Intro -->
+                <div class="screen-content experience-screen" id="screen-intro">
+                    <div class="experience-bg"></div>
+                    <div class="floating-notes">
+                        <span class="note">♪</span>
+                        <span class="note">♫</span>
+                        <span class="note">♪</span>
+                    </div>
+                    <div class="experience-content">
+                        <div class="rock-hand-big">🤘</div>
+                        <h1 class="intro-title">Now Starting<br>a Band</h1>
+                        <p class="intro-sub">Let's create your band name based on what you've been listening to</p>
+                        <button class="cta-btn" id="btn-intro">Let's go</button>
+                    </div>
+                    <div class="progress-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+
+                <!-- Screen 3: Top Song Reveal -->
+                <div class="screen-content experience-screen" id="screen-song">
+                    <div class="experience-bg song-bg"></div>
+                    <div class="experience-content">
+                        <p class="reveal-label">Your #1 song this month</p>
+                        <div class="album-art-container">
+                            <img class="album-art-large" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/29/a7/c4/29a7c478-351d-25eb-a116-3e68118cdab8/24UMGIM31246.rgb.jpg/500x500bb.jpg" alt="Good Luck, Babe!">
+                            <div class="album-glow"></div>
+                        </div>
+                        <h2 class="song-title">
+                            <span class="highlight-word">Good</span> Luck, Babe!
+                        </h2>
+                        <p class="artist-name">Chappell Roan</p>
+                        <div class="word-callout">
+                            <span class="callout-arrow">↑</span>
+                            <span class="callout-text">First word of your band name</span>
+                        </div>
+                        <button class="cta-btn" id="btn-song">Next</button>
+                    </div>
+                    <div class="progress-dots">
+                        <span class="dot"></span>
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+
+                <!-- Screen 4: Top Podcast Reveal -->
+                <div class="screen-content experience-screen" id="screen-podcast">
+                    <div class="experience-bg podcast-bg"></div>
+                    <div class="experience-content">
+                        <p class="reveal-label">Your #1 podcast this month</p>
+                        <div class="podcast-art-container">
+                            <div class="podcast-art">
+                                <div class="podcast-icon">🎙️</div>
+                            </div>
+                            <div class="podcast-glow"></div>
+                        </div>
+                        <h2 class="podcast-title">
+                            Call Her <span class="highlight-word">Daddy</span>
+                        </h2>
+                        <p class="host-name">Alex Cooper</p>
+                        <div class="word-callout">
+                            <span class="callout-arrow">↑</span>
+                            <span class="callout-text">Last word of your band name</span>
+                        </div>
+                        <button class="cta-btn" id="btn-podcast">Reveal my band name</button>
+                    </div>
+                    <div class="progress-dots">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+
+                <!-- Screen 5: Final Reveal / Share Card -->
+                <div class="screen-content experience-screen" id="screen-result">
+                    <div class="experience-bg result-bg"></div>
+                    <div class="confetti-container" id="confetti"></div>
+                    <div class="experience-content">
+                        <p class="result-label">Your band name is</p>
+                        <div class="share-card">
+                            <div class="card-decoration top-left"></div>
+                            <div class="card-decoration top-right"></div>
+                            <div class="card-decoration bottom-left"></div>
+                            <div class="card-decoration bottom-right"></div>
+                            <div class="band-name-reveal">
+                                <span class="rock-hand-result">🤘</span>
+                                <h1 class="band-name">Good Daddy</h1>
+                            </div>
+                            <div class="name-formula">
+                                <span class="formula-part">"Good" from Good Luck, Babe!</span>
+                                <span class="formula-plus">+</span>
+                                <span class="formula-part">"Daddy" from Call Her Daddy</span>
+                            </div>
+                            <div class="spotify-badge">
+                                <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Green.png" class="badge-logo" alt="Spotify">
+                                <span>Now Starting a Band</span>
+                            </div>
+                        </div>
+                        <button class="share-btn" id="btn-share">
+                            <span class="share-icon">↗</span>
+                            Share your band name
+                        </button>
+                        <button class="secondary-btn" id="btn-restart">Start over</button>
+                    </div>
+                    <div class="progress-dots">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot active"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div><!-- end main-content -->
+    <script>
+        // Password Protection
+        const PASSWORD = 'bandname';
+        const gate = document.getElementById('passwordGate');
+        const mainContent = document.getElementById('mainContent');
+        const input = document.getElementById('passwordInput');
+        const submit = document.getElementById('passwordSubmit');
+
+        function checkPassword() {
+            if (input.value === PASSWORD) {
+                gate.classList.add('hidden');
+                mainContent.classList.add('visible');
+                sessionStorage.setItem('authenticated', 'true');
+            } else {
+                input.classList.add('error');
+                input.value = '';
+                setTimeout(() => input.classList.remove('error'), 400);
+            }
+        }
+
+        // Check if already authenticated this session
+        if (sessionStorage.getItem('authenticated') === 'true') {
+            gate.classList.add('hidden');
+            mainContent.classList.add('visible');
+        }
+
+        submit.addEventListener('click', checkPassword);
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') checkPassword();
+        });
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
