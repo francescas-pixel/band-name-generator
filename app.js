@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "Espresso",
             artist: "Sabrina Carpenter",
-            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/a1/1c/ca/a11ccab6-7d4c-e041-d028-998bcebeb709/24UMGIM61704.rgb.jpg/500x500bb.jpg"
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/57/e8/7b/57e87ba0-5057-9bb9-c247-ce7dbe426e89/24UMGIM55213.rgb.jpg/500x500bb.jpg"
         },
         {
             title: "Not Like Us",
@@ -27,32 +27,32 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "Beautiful Things",
             artist: "Benson Boone",
-            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/b4/71/42/b4714219-fa20-e534-5297-08c2580bc3c1/24UMGIM08270.rgb.jpg/500x500bb.jpg"
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/54/f4/92/54f49210-e260-b519-ebbd-f4f40ee710cd/054391342751.jpg/500x500bb.jpg"
         },
         {
             title: "Lose Control",
             artist: "Teddy Swims",
-            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/4e/40/93/4e409396-a558-c0ee-07f3-511193f9a104/093624852711.jpg/500x500bb.jpg"
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/36/19/66/36196640-1561-dc5e-c6bc-1e5f4befa583/093624856771.jpg/500x500bb.jpg"
         },
         {
             title: "Pink Friday Girls",
             artist: "Nicki Minaj",
-            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/4f/df/cc/4fdfcc6c-fd68-85d0-a8cf-8c6e9f0b34a0/24UMGIM07541.rgb.jpg/500x500bb.jpg"
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/83/f0/83/83f08337-954b-e616-b8d9-317d9def8190/23UM1IM08927.rgb.jpg/500x500bb.jpg"
         },
         {
             title: "Stick Season",
             artist: "Noah Kahan",
-            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/59/3d/0c/593d0c73-8c3c-c890-efb7-347420e05f90/810090090924.jpg/500x500bb.jpg"
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/e4/75/f3/e475f31a-ade1-50bf-e983-1467aaf62c46/23UMGIM59938.rgb.jpg/500x500bb.jpg"
         },
         {
             title: "Cruel Summer",
             artist: "Taylor Swift",
-            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/e0/d5/7b/e0d57b28-4d2f-5c14-d346-f5e1a06dc561/19UMGIM57098.rgb.jpg/500x500bb.jpg"
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/49/3d/ab/493dab54-f920-9043-6181-80993b8116c9/19UMGIM53909.rgb.jpg/500x500bb.jpg"
         },
         {
             title: "Water",
             artist: "Tyla",
-            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/c3/d5/08/c3d5088d-3b24-0e03-3fd6-6e4cf3efcf76/196871349413.jpg/500x500bb.jpg"
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/1e/c9/5b/1ec95bbc-a56f-cbef-070c-ddec9f4fdd3c/196871296205.jpg/500x500bb.jpg"
         },
         {
             title: "Vampire",
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "Snooze",
             artist: "SZA",
-            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/0d/4f/9b/0d4f9b76-1e3b-d56e-cc73-ade6f12d83c4/196589418838.jpg/500x500bb.jpg"
+            artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/62/93/13/6293132e-20ff-67ab-3d1f-96bb6797a6ba/196589564955.jpg/500x500bb.jpg"
         }
     ];
 
